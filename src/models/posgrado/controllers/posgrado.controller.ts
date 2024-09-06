@@ -1,0 +1,92 @@
+import { Request, Response } from "express";
+import { PosgradoService } from "../services/posgrado.services";
+import { PosgradoDTO } from "../dto/posgrado.dto";
+
+export class PosgradoController {
+    constructor(
+        private readonly posgradoService: PosgradoService = new PosgradoService()
+    ) {}
+
+    async getPosgrados(req: Request, res: Response) {
+        try {
+            const posgrados = await this.posgradoService.findAllPosgrados();
+            res.status(200).json(posgrados);
+        } catch (e) {
+            console.error(e);
+            if (e instanceof Error) {
+                res.status(500).json({ error: e.message });
+            } else {
+                res.status(500).json({ error: "Error desconocido al obtener los posgrados" });
+            }
+        }
+    }
+
+    async getPosgradoById(req: Request, res: Response) {
+        const { id } = req.params;
+        try {
+            const posgrado = await this.posgradoService.findPosgradoById(Number(id));
+            if (posgrado) {
+                res.status(200).json(posgrado);
+            } else {
+                res.status(404).json({ error: "Posgrado no encontrado" });
+            }
+        } catch (e) {
+            console.error(e);
+            if (e instanceof Error) {
+                res.status(500).json({ error: e.message });
+            } else {
+                res.status(500).json({ error: "Error desconocido al obtener el posgrado" });
+            }
+        }
+    }
+
+    async createPosgrado(req: Request, res: Response) {
+        try {
+            const dto: PosgradoDTO = req.body;
+            const data = await this.posgradoService.createPosgrado(dto);
+            res.status(201).json(data);
+        } catch (e) {
+            console.error(e);
+            if (e instanceof Error) {
+                res.status(400).json({ error: e.message });
+            } else {
+                res.status(500).json({ error: "Error desconocido al crear el posgrado" });
+            }
+        }
+    }
+
+    async updatePosgrado(req: Request, res: Response) {
+        const { id } = req.params;
+        try {
+            const dto: PosgradoDTO = req.body;
+            await this.posgradoService.updatePosgrado(Number(id), dto);
+            res.status(200).json({ message: "Posgrado actualizado con éxito" });
+        } catch (e) {
+            console.error(e);
+            if (e instanceof Error) {
+                res.status(400).json({ error: e.message });
+            } else {
+                res.status(500).json({ error: "Error desconocido al actualizar el posgrado" });
+            }
+        }
+    }
+
+    async deletePosgrado(req: Request, res: Response) {
+        const { id } = req.params;
+        try {
+            const result = await this.posgradoService.deletePosgrado(Number(id));
+            if (result.affected) {
+                res.status(200).json({ message: "Posgrado eliminado con éxito" });
+            } else {
+                res.status(404).json({ error: "Posgrado no encontrado" });
+            }
+        } catch (e) {
+            console.error(e);
+            if (e instanceof Error) {
+                res.status(500).json({ error: e.message });
+            } else {
+                res.status(500).json({ error: "Error desconocido al eliminar el posgrado" });
+            }
+        }
+    }
+}
