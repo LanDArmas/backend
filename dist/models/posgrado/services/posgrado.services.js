@@ -30,6 +30,35 @@ class PosgradoService extends base_service_1.BaseService {
             return (yield this.execRepository).findOneBy({ id_posgrado });
         });
     }
+    findCountByPosgrado() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const query = `
+            SELECT
+                posgrado.id_posgrado AS id_posgrado,
+                posgrado.nombre AS nombre,
+                posgrado.matricula_inicial AS matricula_inicial,
+                posgrado.matricula_final AS matricula_final,
+                COUNT(CASE WHEN estudiante.sexo = 'F' THEN 1 ELSE NULL END) AS mujeres,
+                COUNT(CASE WHEN estudiante.cuadro = true THEN 1 ELSE NULL END) AS cuadros,
+                COUNT(CASE WHEN estudiante.reserva = true THEN 1 ELSE NULL END) AS reservas
+            FROM
+                posgrado
+            LEFT JOIN
+                estudiante ON estudiante.id_posgrado = posgrado.id_posgrado
+            GROUP BY
+                posgrado.id_posgrado, posgrado.nombre, posgrado.matricula_inicial, posgrado.matricula_final;
+        `;
+            console.log(query);
+            try {
+                const results = yield (yield this.execRepository).query(query);
+                return results;
+            }
+            catch (error) {
+                console.error('Error executing query:', error);
+                throw new Error('Error executing query');
+            }
+        });
+    }
     createPosgrado(body) {
         return __awaiter(this, void 0, void 0, function* () {
             // const posgrado = new PosgradoEntity();

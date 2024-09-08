@@ -41,14 +41,16 @@ class EstudianteService extends base_service_1.BaseService {
     }
     findCountByPosgrado() {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = (yield this.execRepository).createQueryBuilder('estudiante')
-                .select('estudiante.posgrado.id_posgrado AS id_posgrado')
-                .addSelect('COUNT(CASE WHEN estudiante.docente IS NOT NULL THEN 1 ELSE NULL END) AS docentes')
-                .addSelect('COUNT(CASE WHEN estudiante.noDocente IS NOT NULL THEN 1 ELSE NULL END) AS noDocentes')
-                .addSelect('COUNT(CASE WHEN estudiante.sexo = \'F\' THEN 1 ELSE NULL END) AS mujeres')
-                .addSelect('COUNT(CASE WHEN estudiante.cuadro = true THEN 1 ELSE NULL END) AS cuadros')
-                .addSelect('COUNT(CASE WHEN estudiante.reserva = true THEN 1 ELSE NULL END) AS reservas')
-                .groupBy('estudiante.posgrado.id_posgrado');
+            const query = (yield this.execRepository)
+                .createQueryBuilder('estudiante')
+                .innerJoin('estudiante.posgrado', 'posgrado') // Hacemos un join con la tabla de posgrado
+                .select('posgrado.nombre AS nombre') // Nombre del posgrado
+                .addSelect('posgrado.matricula_inicial AS matricula_inicial') // Matrícula inicial del posgrado
+                .addSelect('posgrado.matricula_final AS matricula_final') // Matrícula final del posgrado
+                .addSelect('COUNT(CASE WHEN estudiante.sexo = \'F\' THEN 1 ELSE NULL END) AS mujeres') // Cantidad de mujeres
+                .addSelect('COUNT(CASE WHEN estudiante.cuadro = true THEN 1 ELSE NULL END) AS cuadros') // Cantidad de cuadros
+                .addSelect('COUNT(CASE WHEN estudiante.reserva = true THEN 1 ELSE NULL END) AS reservas') // Cantidad de reservas
+                .groupBy('posgrado.nombre, posgrado.matricula_inicial, posgrado.matricula_final'); // Agrupamos por los campos de posgrado
             const results = yield query.getRawMany();
             return results;
         });

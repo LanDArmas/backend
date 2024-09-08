@@ -20,6 +20,40 @@ export class PosgradoService extends BaseService<PosgradoEntity> {
     async findPosgradoById(id_posgrado: number): Promise<PosgradoEntity | null> {
         return (await this.execRepository).findOneBy({ id_posgrado });
     }
+
+    async findCountByPosgrado(): Promise<any> {
+        const query = `
+            SELECT
+                posgrado.id_posgrado AS id_posgrado,
+                posgrado.nombre AS nombre,
+                posgrado.matricula_inicial AS matricula_inicial,
+                posgrado.matricula_final AS matricula_final,
+                COUNT(CASE WHEN estudiante.sexo = 'F' THEN 1 ELSE NULL END) AS mujeres,
+                COUNT(CASE WHEN estudiante.cuadro = true THEN 1 ELSE NULL END) AS cuadros,
+                COUNT(CASE WHEN estudiante.reserva = true THEN 1 ELSE NULL END) AS reservas
+            FROM
+                posgrado
+            LEFT JOIN
+                estudiante ON estudiante.id_posgrado = posgrado.id_posgrado
+            GROUP BY
+                posgrado.id_posgrado, posgrado.nombre, posgrado.matricula_inicial, posgrado.matricula_final;
+        `;
+        console.log(query)
+
+        try {
+            const results = await (await this.execRepository).query(query);
+            return results;
+        } catch (error) {
+            console.error('Error executing query:', error);
+            throw new Error('Error executing query');
+        }
+    }
+
+    
+    
+    
+    
+
    
 
     async createPosgrado(body: PosgradoDTO): Promise<PosgradoEntity> {

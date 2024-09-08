@@ -13,6 +13,7 @@ exports.EstudianteDTO = void 0;
 const class_validator_1 = require("class-validator");
 const base_dto_1 = require("../../../config/base.dto");
 const docente_entity_1 = require("../../docente/entities/docente.entity");
+const noDocente_entity_1 = require("../../noDocente/entities/noDocente.entity");
 class EstudianteDTO extends base_dto_1.BaseDTO {
 }
 exports.EstudianteDTO = EstudianteDTO;
@@ -66,3 +67,7 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", docente_entity_1.DocenteEntity)
 ], EstudianteDTO.prototype, "docente", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", noDocente_entity_1.NoDocenteEntity)
+], EstudianteDTO.prototype, "noDocente", void 0);

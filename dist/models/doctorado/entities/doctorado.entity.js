@@ -27,7 +27,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], DoctoradoEntity.prototype, "modalidad", void 0);
+], DoctoradoEntity.prototype, "modalidad_doc", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)

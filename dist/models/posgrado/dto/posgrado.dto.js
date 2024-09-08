@@ -11,8 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PosgradoDTO = void 0;
 const class_validator_1 = require("class-validator");
-const base_dto_1 = require("../../../config/base.dto");
-class PosgradoDTO extends base_dto_1.BaseDTO {
+class PosgradoDTO {
 }
 exports.PosgradoDTO = PosgradoDTO;
 __decorate([
@@ -58,7 +57,7 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], PosgradoDTO.prototype, "tipo_posgrado", void 0);
+], PosgradoDTO.prototype, "modalidad", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsNumber)(),

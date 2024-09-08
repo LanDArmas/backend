@@ -12,6 +12,8 @@ export class PosgradoRouter extends BaseRouter<PosgradoController>{
         // usuario por id
         this.router.get('/Posgrado/:id', (req, res) => this.controller.getPosgradoById(req, res));
 
+        this.router.get('/Posgrados/Anexos', (req, res) => this.controller.findCountByPosgrado(req, res));
+
         // adicionar usuario
         this.router.post('/Posgrado/createPosgrado', (req, res) => this.controller.createPosgrado(req, res));
         
@@ -20,5 +22,6 @@ export class PosgradoRouter extends BaseRouter<PosgradoController>{
 
         // eliminar usuario
         this.router.delete('/Posgrado/deletePosgrado/:id', (req, res) => this.controller.deletePosgrado(req, res));
+       
     }
 }

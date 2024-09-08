@@ -51,7 +51,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], PosgradoEntity.prototype, "tipo_posgrado", void 0);
+], PosgradoEntity.prototype, "modalidad", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => estudiante_entity_1.EstudianteEntity, (estudiante) => estudiante.posgrado),
     __metadata("design:type", Object)
@@ -59,7 +59,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.ManyToOne)(() => profesor_entity_1.ProfesorEntity, (profesor) => profesor.posgrado),
     (0, typeorm_1.JoinColumn)({ name: 'id_profe' }),
-    __metadata("design:type", Object)
+    __metadata("design:type", profesor_entity_1.ProfesorEntity /*['id_profe']*/)
 ], PosgradoEntity.prototype, "profesor", void 0);
 exports.PosgradoEntity = PosgradoEntity = __decorate([
     (0, typeorm_1.Entity)({ name: "posgrado" })

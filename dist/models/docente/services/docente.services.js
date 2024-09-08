@@ -12,8 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DocenteService = void 0;
 const base_service_1 = require("../../../config/base.service");
 const docente_entity_1 = require("../entities/docente.entity");
-const estudiante_entity_1 = require("../../estudiante/entities/estudiante.entity");
-const posgrado_entity_1 = require("../../posgrado/entities/posgrado.entity");
 class DocenteService extends base_service_1.BaseService {
     constructor() {
         super(docente_entity_1.DocenteEntity);
@@ -37,32 +35,8 @@ class DocenteService extends base_service_1.BaseService {
     // Servicio para crear un docente
     createDocente(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            const repository = yield this.execRepository;
-            // Buscar el posgrado por ID para asegurarse de que existe
-            const posgrado = yield repository.manager.findOne(posgrado_entity_1.PosgradoEntity, {
-                where: { id_posgrado: body.estudiante.posgrado },
-            });
-            if (!posgrado) {
-                throw new Error(`No se encontró el posgrado con ID ${body.estudiante.posgrado}`);
-            }
-            // Crear una nueva instancia de EstudianteEntity
-            const estudiante = new estudiante_entity_1.EstudianteEntity();
-            estudiante.ci = body.estudiante.ci;
-            estudiante.nombre_est = body.estudiante.nombre_est;
-            estudiante.primer_apellido_est = body.estudiante.primer_apellido_est;
-            estudiante.segundo_apellido_est = body.estudiante.segundo_apellido_est;
-            estudiante.sexo = body.estudiante.sexo;
-            estudiante.cuadro = body.estudiante.cuadro;
-            estudiante.reserva = body.estudiante.reserva;
-            estudiante.posgrado = body.estudiante.posgrado; // Asignar el posgrado al estudiante
-            // Guardar el estudiante primero para obtener su ID
-            const savedEstudiante = yield repository.manager.save(estudiante);
-            // Crear una nueva instancia de DocenteEntity
-            const docente = new docente_entity_1.DocenteEntity();
-            docente.facultad_doc = body.facultad_doc;
-            docente.estudiante = savedEstudiante; // Asignar el estudiante ya guardado al docente
-            // Guardar el docente (esto debería asociar el estudiante ya guardado)
-            return repository.save(docente);
+            const docente = docente_entity_1.DocenteEntity.create(body);
+            return yield docente.save();
         });
     }
     // Servicio para eliminar un docente

@@ -9,6 +9,7 @@ export class PosgradoController {
 
     async getPosgrados(req: Request, res: Response) {
         try {
+            console.log("sdfsfsf");
             const posgrados = await this.posgradoService.findAllPosgrados();
             res.status(200).json(posgrados);
         } catch (e) {
@@ -39,6 +40,20 @@ export class PosgradoController {
             }
         }
     }
+
+    async findCountByPosgrado(req: Request, res: Response): Promise<void> {
+        try {
+            const statistics = await this.posgradoService.findCountByPosgrado();
+            res.status(200).json(statistics);
+        } catch (error) {
+            console.error('Error in getStatistics:', error);
+            res.status(500).json({ message: 'Error retrieving statistics' });
+        }
+    }
+    
+    
+    
+    
 
     async createPosgrado(req: Request, res: Response) {
         try {

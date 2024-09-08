@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node dist/server.js",
     "start:dev": "tsc && concurrently  \"tsc -w\" \"nodemon dist/server\" ",
     "start:prod": "SET NODE_ENV=production && npm start"
   },
   "author": "Lan",
   "license": "ISC",
-  "description": "",
+  "description": "posgrado",
   "dependencies": {
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
@@ -35,5 +36,8 @@
     "jest-mock-extended": "^3.0.7",
     "nodemon": "^3.1.4",
     "ts-jest": "^29.2.5"
+  },
+  "directories": {
+    "test": "test"
   }
 }

@@ -18,6 +18,7 @@ class PosgradoController {
     getPosgrados(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                console.log("sdfsfsf");
                 const posgrados = yield this.posgradoService.findAllPosgrados();
                 res.status(200).json(posgrados);
             }
@@ -52,6 +53,19 @@ class PosgradoController {
                 else {
                     res.status(500).json({ error: "Error desconocido al obtener el posgrado" });
                 }
+            }
+        });
+    }
+    getCountByPosgrado(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // Llama al servicio sin pasar ningún parámetro
+                const result = yield this.posgradoService.findCountByPosgrado();
+                res.status(200).json(result);
+            }
+            catch (error) {
+                console.error('Error in getCountByPosgrado:', error);
+                res.status(500).json({ message: 'Error retrieving data' });
             }
         });
     }
