@@ -14,9 +14,9 @@ describe('PosgradoEntity', () => {
         posgrado.fecha_inicio = new Date('2024-01-01');
         posgrado.fecha_culminacion = new Date('2025-01-01');
         posgrado.matricula_inicial = 30;
-        posgrado.matricula_final = 50;
-        posgrado.categoria_cientifica = 'Categoría A';
-        posgrado.tipo_posgrado = 'Maestría';
+        posgrado.matricula_final = 28;
+        posgrado.categoria_cientifica = 'Maestría';
+        posgrado.modalidad = 'Otra';
         posgrado.profesor = profesor;
         expect(posgrado.id_posgrado).toBe(1);
         expect(posgrado.facultad).toBe('Facultad de Ciencias');
@@ -24,9 +24,9 @@ describe('PosgradoEntity', () => {
         expect(posgrado.fecha_inicio).toEqual(new Date('2024-01-01'));
         expect(posgrado.fecha_culminacion).toEqual(new Date('2025-01-01'));
         expect(posgrado.matricula_inicial).toBe(30);
-        expect(posgrado.matricula_final).toBe(50);
-        expect(posgrado.categoria_cientifica).toBe('Categoría A');
-        expect(posgrado.tipo_posgrado).toBe('Maestría');
+        expect(posgrado.matricula_final).toBe(28);
+        expect(posgrado.categoria_cientifica).toBe('Maestría');
+        expect(posgrado.modalidad).toBe('Otra');
         expect(posgrado.profesor).toEqual(profesor);
     });
 });

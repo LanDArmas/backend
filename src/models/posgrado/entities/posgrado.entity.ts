@@ -29,7 +29,7 @@ export class PosgradoEntity extends BaseEntity {
     categoria_cientifica!: string;
 
     @Column()
-    tipo_posgrado!: string;
+    modalidad!: string;
 
     @OneToMany(() => EstudianteEntity, (estudiante) => estudiante.posgrado)
     estudiante!: EstudianteEntity["id_estudiante"];

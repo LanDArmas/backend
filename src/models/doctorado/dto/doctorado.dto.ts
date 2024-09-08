@@ -14,7 +14,7 @@ export class DoctoradoDTO extends BaseDTO {
 
     @IsNotEmpty()
     @IsString()
-    modalidad!: string;
+    modalidad_doc!: string;
 
     @IsNotEmpty()
     @IsNumber()

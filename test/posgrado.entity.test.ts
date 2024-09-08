@@ -17,7 +17,7 @@ describe('PosgradoEntity', () => {
     posgrado.matricula_inicial = 30;
     posgrado.matricula_final = 28;
     posgrado.categoria_cientifica = 'Maestría';
-    posgrado.tipo_posgrado = 'Otra';
+    posgrado.modalidad = 'Otra';
     posgrado.profesor = profesor;
 
     expect(posgrado.id_posgrado).toBe(1);
@@ -28,7 +28,7 @@ describe('PosgradoEntity', () => {
     expect(posgrado.matricula_inicial).toBe(30);
     expect(posgrado.matricula_final).toBe(28);
     expect(posgrado.categoria_cientifica).toBe('Maestría');
-    expect(posgrado.tipo_posgrado).toBe('Otra');
+    expect(posgrado.modalidad).toBe('Otra');
     expect(posgrado.profesor).toEqual(profesor);
   });
 });

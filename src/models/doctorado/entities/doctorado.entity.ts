@@ -11,7 +11,7 @@ export class DoctoradoEntity extends BaseEntity {
     nombre_programa!: string;
 
     @Column()
-    modalidad!: string;
+    modalidad_doc!: string;
 
     @Column()
     edad_doctor!: number;

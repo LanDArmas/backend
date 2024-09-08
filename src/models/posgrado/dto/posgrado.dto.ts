@@ -36,7 +36,7 @@ export class PosgradoDTO  {
 
     @IsNotEmpty()
     @IsString()
-    tipo_posgrado!: string;
+    modalidad!: string;
 
     @IsNotEmpty()
     @IsNumber()
