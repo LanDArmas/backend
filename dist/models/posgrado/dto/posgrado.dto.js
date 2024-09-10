@@ -11,7 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PosgradoDTO = void 0;
 const class_validator_1 = require("class-validator");
-class PosgradoDTO {
+const base_dto_1 = require("../../../config/base.dto");
+class PosgradoDTO extends base_dto_1.BaseDTO {
 }
 exports.PosgradoDTO = PosgradoDTO;
 __decorate([

@@ -16,6 +16,15 @@ class PosgradoService extends base_service_1.BaseService {
     constructor() {
         super(posgrado_entity_1.PosgradoEntity);
     }
+    findPosgradoWithActividades(id_posgrado) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (yield this.execRepository).findOne({
+                where: { id_posgrado },
+                relations: ['actividad'],
+                select: ['nombre', 'actividad']
+            });
+        });
+    }
     findAllPosgrados() {
         return __awaiter(this, void 0, void 0, function* () {
             return (yield this.execRepository)
@@ -61,16 +70,6 @@ class PosgradoService extends base_service_1.BaseService {
     }
     createPosgrado(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            // const posgrado = new PosgradoEntity();
-            // posgrado.facultad = body.facultad;
-            // posgrado.nombre = body.nombre;
-            // posgrado.fecha_inicio = body.fecha_inicio;  // Asegúrate de convertir la fecha si es un string
-            // posgrado.fecha_culminacion = body.fecha_culminacion;
-            // posgrado.matricula_inicial = body.matricula_inicial;
-            // posgrado.matricula_final = body.matricula_final;
-            // posgrado.categoria_cientifica = body.categoria_cientifica;
-            // posgrado.tipo_posgrado = body.tipo_posgrado;
-            // posgrado.profesor = body.id_profe;
             return (yield this.execRepository).save(body);
         });
     }

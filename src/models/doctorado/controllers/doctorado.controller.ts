@@ -57,5 +57,14 @@ async deleteDoctorado(req: Request, res: Response){
 	}
 }
   
+async countDoctorados(req: Request, res: Response) {
+	try {
+	  const data = await this.doctoradoService.countDoctorados();
+	  res.status(200).json(data);
+	} catch (e) {
+	  console.error(e);
+	  res.status(500).json({ error: e instanceof Error ? e.message : "Error al obtener los datos" });
+	}
+  }
 
 }

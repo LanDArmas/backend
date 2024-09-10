@@ -9,87 +9,79 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DoctoradoController = void 0;
-const doctorado_services_1 = require("../services/doctorado.services");
-class DoctoradoController {
-    constructor(doctoradoService = new doctorado_services_1.DoctoradoService()) {
-        this.doctoradoService = doctoradoService;
+exports.ActividadController = void 0;
+const actividad_services_1 = require("../services/actividad.services");
+class ActividadController {
+    constructor(actividadService = new actividad_services_1.ActividadService()) {
+        this.actividadService = actividadService;
     }
-    ;
-    // obtain all users
-    getDoctorados(req, res) {
+    // Obtener todos los Actividads
+    getActividades(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const data = yield this.doctoradoService.findAllDoctorados();
+                const data = yield this.actividadService.findAllActividades();
                 res.status(200).json(data);
             }
             catch (e) {
                 console.error(e);
+                res.status(500).json({ error: "Error al obtener las Actividades" });
             }
         });
     }
-    // obtain an user by id
-    getDoctoradoById(req, res) {
+    // Obtener un Actividad por ID
+    getActividadById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id_doctorado } = req.params;
+            const { id } = req.params;
             try {
-                const data = yield this.doctoradoService.findDoctoradoById(Number(id_doctorado));
+                const data = yield this.actividadService.findActividadById(Number(id));
                 res.status(200).json(data);
             }
             catch (e) {
                 console.error(e);
+                res.status(500).json({ error: "Error al obtener la Actividad" });
             }
         });
     }
-    //crete a new user
-    createDoctorado(req, res) {
+    // Crear un nuevo Actividad
+    createActividad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const data = yield this.doctoradoService.createDoctorado(req.body);
-                res.status(200).json(data);
+                const data = yield this.actividadService.createActividad(req.body);
+                res.status(201).json(data);
             }
             catch (e) {
                 console.error(e);
+                res.status(500).json({ error: "Error al crear la Actividad" });
             }
         });
     }
-    //modify an user
-    updateDoctorado(req, res) {
+    // Actualizar un Actividad
+    updateActividad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id_doctorado } = req.params;
+            const { id } = req.params;
             try {
-                const data = yield this.doctoradoService.updateDoctorado(Number(id_doctorado), req.body);
+                const data = yield this.actividadService.updateActividad(Number(id), req.body);
                 res.status(200).json(data);
             }
             catch (e) {
                 console.error(e);
+                res.status(500).json({ error: "Error al actualizar la Actividad" });
             }
         });
     }
-    //remove an user
-    deleteDoctorado(req, res) {
+    // Eliminar un Actividad
+    deleteActividad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id_doctorado } = req.params;
+            const { id } = req.params;
             try {
-                const data = yield this.doctoradoService.deleteDoctorado(Number(id_doctorado));
+                const data = yield this.actividadService.deleteActividad(Number(id));
                 res.status(200).json(data);
             }
             catch (e) {
                 console.error(e);
-            }
-        });
-    }
-    countDoctorados(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const data = yield this.doctoradoService.countDoctorados();
-                res.status(200).json(data);
-            }
-            catch (e) {
-                console.error(e);
-                res.status(500).json({ error: e instanceof Error ? e.message : "Error al obtener los datos" });
+                res.status(500).json({ error: "Error al eliminar la Actividad" });
             }
         });
     }
 }
-exports.DoctoradoController = DoctoradoController;
+exports.ActividadController = ActividadController;

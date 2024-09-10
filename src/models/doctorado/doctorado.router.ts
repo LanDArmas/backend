@@ -19,5 +19,9 @@ this.router.put('/Doctorado/updateDoctorado/:id', (req, res) => this.controller.
 
         // eliminar usuario
 this.router.delete('/Doctorado/deleteDoctorado/:id', (req, res) => this.controller.deleteDoctorado(req, res));
+
+this.router.get('/Doctorados/reporteDoctorado', (req, res) => this.controller.countDoctorados(req, res));
+
+
     }
 }

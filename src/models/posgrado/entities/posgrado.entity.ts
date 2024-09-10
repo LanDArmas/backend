@@ -1,3 +1,4 @@
+import { ActividadEntity } from './../../actividad/entities/actividad.entity';
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, ManyToOne, JoinColumn } from "typeorm";
 import { EstudianteEntity } from "../../estudiante/entities/estudiante.entity";
 import { ProfesorEntity } from "../../profesor/entities/profesor.entity";
@@ -33,6 +34,9 @@ export class PosgradoEntity extends BaseEntity {
 
     @OneToMany(() => EstudianteEntity, (estudiante) => estudiante.posgrado)
     estudiante!: EstudianteEntity["id_estudiante"];
+
+    @OneToMany(() => ActividadEntity, (actividad) => actividad.posgrado)
+    actividad!: ActividadEntity["id_actividad"]
 
     @ManyToOne(() => ProfesorEntity, (profesor) => profesor.posgrado)
     @JoinColumn({ name: 'id_profe' })

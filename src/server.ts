@@ -9,6 +9,7 @@ import { DoctoradoRouter } from './models/doctorado/doctorado.router';
 import { EstudianteRouter } from './models/estudiante/estudiante.router';
 import { PosgradoRouter } from './models/posgrado/posgrado.router';
 import { ProfesorRouter } from './models/profesor/profesor.router';
+import { ActividadRouter } from './models/actividad/actividad.router';
 
 
 
@@ -20,6 +21,7 @@ class servidor extends ConfigServer {
                 new EstudianteRouter().router,
                 new PosgradoRouter().router,
                 new ProfesorRouter().router,
+                new ActividadRouter().router
             ];
 	 }
 

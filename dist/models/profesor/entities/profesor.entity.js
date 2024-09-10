@@ -40,7 +40,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], ProfesorEntity.prototype, "formacion", void 0);
+], ProfesorEntity.prototype, "categoria_profe", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => posgrado_entity_1.PosgradoEntity, (posgrado) => posgrado.profesor),
     __metadata("design:type", Array)

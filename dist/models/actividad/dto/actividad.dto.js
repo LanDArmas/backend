@@ -9,40 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProfesorDTO = void 0;
+exports.ActividadDTO = void 0;
 const class_validator_1 = require("class-validator");
-const base_dto_1 = require("../../../config/base.dto");
-class ProfesorDTO extends base_dto_1.BaseDTO {
+const base_dto_1 = require("./../../../config/base.dto");
+class ActividadDTO extends base_dto_1.BaseDTO {
 }
-exports.ProfesorDTO = ProfesorDTO;
+exports.ActividadDTO = ActividadDTO;
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
-], ProfesorDTO.prototype, "id_profe", void 0);
+], ActividadDTO.prototype, "id_actividad", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], ProfesorDTO.prototype, "nombre_profe", void 0);
+], ActividadDTO.prototype, "descripcion", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], ProfesorDTO.prototype, "apellidos_profe", void 0);
+    (0, class_validator_1.IsDate)(),
+    __metadata("design:type", Date)
+], ActividadDTO.prototype, "fecha_act", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.Length)(11, 11),
     __metadata("design:type", Number)
-], ProfesorDTO.prototype, "ci_profe", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], ProfesorDTO.prototype, "sexo_profe", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], ProfesorDTO.prototype, "categoria_profe", void 0);
+], ActividadDTO.prototype, "id_posgrado", void 0);

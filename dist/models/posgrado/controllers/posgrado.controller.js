@@ -68,6 +68,24 @@ class PosgradoController {
             }
         });
     }
+    findPosgradoWithActividades(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = parseInt(req.params.id, 10);
+                const posgrado = yield this.posgradoService.findPosgradoWithActividades(id);
+                if (!posgrado) {
+                    res.status(404).json({ message: 'Posgrado no encontrado' });
+                }
+                else {
+                    res.status(200).json(posgrado);
+                }
+            }
+            catch (error) {
+                console.error('Error in findPosgradoWithActividades:', error);
+                res.status(500).json({ message: 'Error retrieving posgrado with activities' });
+            }
+        });
+    }
     createPosgrado(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

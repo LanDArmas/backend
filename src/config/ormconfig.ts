@@ -1,3 +1,4 @@
+import { ActividadEntity } from './../models/actividad/entities/actividad.entity';
 import { DataSource } from "typeorm";
 import  dotenv  from "dotenv";
 import { EstudianteEntity } from "../models/estudiante/entities/estudiante.entity";
@@ -17,7 +18,7 @@ const connectDB = new DataSource({
     database: "posgrado",
     logging: false,
     synchronize: true,
-    entities: [EstudianteEntity,NoDocenteEntity,DocenteEntity,PosgradoEntity,ProfesorEntity,DoctoradoEntity],
+    entities: [EstudianteEntity,NoDocenteEntity,DocenteEntity,ActividadEntity,PosgradoEntity,ProfesorEntity,DoctoradoEntity],
  // migrations: [__dirname + "../../src/migrations/*{.ts, .js}"],
   //ssl: false,
     // extra: {

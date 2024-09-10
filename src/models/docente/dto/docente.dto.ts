@@ -10,6 +10,5 @@ export class DocenteDTO extends BaseDTO {
     @IsNotEmpty()
     estudiante!: EstudianteEntity; // ID del estudiante relacionado
 
-    @IsNotEmpty()
-    id_posgrado!:number;
+
 }

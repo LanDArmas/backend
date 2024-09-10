@@ -14,6 +14,7 @@ const doctorado_router_1 = require("./models/doctorado/doctorado.router");
 const estudiante_router_1 = require("./models/estudiante/estudiante.router");
 const posgrado_router_1 = require("./models/posgrado/posgrado.router");
 const profesor_router_1 = require("./models/profesor/profesor.router");
+const actividad_router_1 = require("./models/actividad/actividad.router");
 class servidor extends config_1.ConfigServer {
     routers() {
         return [new docente_router_1.DocenteRouter().router,
@@ -22,6 +23,7 @@ class servidor extends config_1.ConfigServer {
             new estudiante_router_1.EstudianteRouter().router,
             new posgrado_router_1.PosgradoRouter().router,
             new profesor_router_1.ProfesorRouter().router,
+            new actividad_router_1.ActividadRouter().router
         ];
     }
     //constructor de la clase

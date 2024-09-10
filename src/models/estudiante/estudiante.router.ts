@@ -21,6 +21,7 @@ this.router.put('/Estudiante/updateEstudiante/:id', (req, res) => this.controlle
 this.router.delete('/Estudiante/deleteEstudiante/:id', (req, res) => this.controller.deleteEstudiante(req, res));
 this.router.get('/Estudiante/baseNom/:id', (req, res) => this.controller.getEstudianteByIdPosgrado(req, res));
 this.router.get('/Estudiante/anexoAcum', (req, res) => this.controller.countByPosgrado(req, res));
+this.router.get('/Estudiantes/count', (req, res) => this.controller.countEstudiantesByTipo(req, res));
 
     }
 }

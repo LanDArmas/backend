@@ -5,6 +5,7 @@ import { DocenteDTO } from "../../docente/dto/docente.dto";
 import { NoDocenteDTO } from "../../noDocente/dto/noDocente.dto";
 import { DocenteEntity } from "../../docente/entities/docente.entity";
 import { NoDocenteEntity } from "../../noDocente/entities/noDocente.entity";
+import { PosgradoEntity } from "../../posgrado/entities/posgrado.entity";
 
 export class EstudianteDTO extends BaseDTO {
     @IsNotEmpty()
@@ -49,6 +50,7 @@ export class EstudianteDTO extends BaseDTO {
 
     @IsNotEmpty()
     noDocente!: NoDocenteEntity;
+    
 
 
    

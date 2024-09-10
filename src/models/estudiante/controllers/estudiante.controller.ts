@@ -96,4 +96,14 @@ export class EstudianteController {
       res.status(500).json({ error: e instanceof Error ? e.message : "Error al obtener los datos" });
     }
   }
+  async countEstudiantesByTipo(req: Request, res: Response) {
+    try {
+      const data = await this.estudianteService.countEstudiantesByTipo();
+      res.status(200).json(data);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ error: e instanceof Error ? e.message : "Error al obtener los datos" });
+    }
+  }
+  
 }

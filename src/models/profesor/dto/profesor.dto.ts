@@ -25,7 +25,7 @@ export class ProfesorDTO extends BaseDTO {
 
     @IsNotEmpty()
     @IsString()
-    formacion!: string;
+    categoria_profe!: string;
 
     
     

@@ -51,6 +51,21 @@ export class PosgradoController {
         }
     }
     
+    async findPosgradoWithActividades(req: Request, res: Response): Promise<void> {
+        try {
+          const id = parseInt(req.params.id, 10);
+          const posgrado = await this.posgradoService.findPosgradoWithActividades(id);
+          if (!posgrado) {
+            res.status(404).json({ message: 'Posgrado no encontrado' });
+          } else {
+            res.status(200).json(posgrado);
+          }
+        } catch (error) {
+          console.error('Error in findPosgradoWithActividades:', error);
+          res.status(500).json({ message: 'Error retrieving posgrado with activities' });
+        }
+        
+      }
     
     
     

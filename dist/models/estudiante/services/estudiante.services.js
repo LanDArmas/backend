@@ -57,20 +57,6 @@ class EstudianteService extends base_service_1.BaseService {
     }
     createEstudiante(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            //console.log(body)
-            // const estudiante = new EstudianteEntity();
-            // estudiante.id_estudiante = body.id_estudiante;
-            // estudiante.ci = body.ci;
-            // estudiante.nombre_est = body.nombre_est;
-            // estudiante.primer_apellido_est = body.primer_apellido_est;
-            // estudiante.segundo_apellido_est = body.segundo_apellido_est;
-            // estudiante.sexo = body.sexo;
-            // estudiante.cuadro = body.cuadro;
-            // estudiante.reserva = body.reserva;
-            // estudiante.posgrado = body.id_posgrado;
-            // //estudiante.docente = body.docente;
-            // const docente = new DocenteEntity();
-            // docente.facultad_doc = body.docente.facultad_doc;
             return (yield this.execRepository).save(body);
         });
     }
@@ -82,6 +68,17 @@ class EstudianteService extends base_service_1.BaseService {
     updateEstudiante(id_estudiante, infoUpdate) {
         return __awaiter(this, void 0, void 0, function* () {
             return (yield this.execRepository).update(id_estudiante, infoUpdate);
+        });
+    }
+    countEstudiantesByTipo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (yield this.execRepository)
+                .createQueryBuilder('estudiante')
+                .select('COUNT(CASE WHEN estudiante.docente IS NOT NULL THEN 1 ELSE NULL END)', 'estudiantes_docentes')
+                .addSelect('COUNT(CASE WHEN estudiante.noDocente IS NOT NULL THEN 1 ELSE NULL END)', 'estudiantes_no_docentes')
+                .leftJoinAndSelect('estudiante.docente', 'docente')
+                .leftJoinAndSelect('estudiante.noDocente', 'noDocente')
+                .getRawMany();
         });
     }
 }

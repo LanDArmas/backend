@@ -25,7 +25,3 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", estudiante_entity_1.EstudianteEntity)
 ], DocenteDTO.prototype, "estudiante", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], DocenteDTO.prototype, "id_posgrado", void 0);

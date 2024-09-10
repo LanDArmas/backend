@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NoDocenteDTO = void 0;
 const class_validator_1 = require("class-validator");
 const base_dto_1 = require("../../../config/base.dto");
+const estudiante_entity_1 = require("../../estudiante/entities/estudiante.entity");
 class NoDocenteDTO extends base_dto_1.BaseDTO {
 }
 exports.NoDocenteDTO = NoDocenteDTO;
@@ -22,5 +23,5 @@ __decorate([
 ], NoDocenteDTO.prototype, "organismo", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], NoDocenteDTO.prototype, "id_estudiante", void 0);
+    __metadata("design:type", estudiante_entity_1.EstudianteEntity)
+], NoDocenteDTO.prototype, "estudiante", void 0);

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PosgradoEntity = void 0;
+const actividad_entity_1 = require("./../../actividad/entities/actividad.entity");
 const typeorm_1 = require("typeorm");
 const estudiante_entity_1 = require("../../estudiante/entities/estudiante.entity");
 const profesor_entity_1 = require("../../profesor/entities/profesor.entity");
@@ -56,6 +57,10 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => estudiante_entity_1.EstudianteEntity, (estudiante) => estudiante.posgrado),
     __metadata("design:type", Object)
 ], PosgradoEntity.prototype, "estudiante", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => actividad_entity_1.ActividadEntity, (actividad) => actividad.posgrado),
+    __metadata("design:type", Object)
+], PosgradoEntity.prototype, "actividad", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => profesor_entity_1.ProfesorEntity, (profesor) => profesor.posgrado),
     (0, typeorm_1.JoinColumn)({ name: 'id_profe' }),

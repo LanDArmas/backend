@@ -21,7 +21,7 @@ export class ProfesorEntity extends BaseEntity {
     sexo_profe!: string;
 
     @Column()
-    formacion!: string;
+    categoria_profe!: string;
 
     @OneToMany(() => PosgradoEntity, (posgrado) => posgrado.profesor)
     posgrado!: PosgradoEntity[];

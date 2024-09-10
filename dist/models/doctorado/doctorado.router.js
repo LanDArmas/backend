@@ -18,6 +18,7 @@ class DoctoradoRouter extends router_1.BaseRouter {
         this.router.put('/Doctorado/updateDoctorado/:id', (req, res) => this.controller.updateDoctorado(req, res));
         // eliminar usuario
         this.router.delete('/Doctorado/deleteDoctorado/:id', (req, res) => this.controller.deleteDoctorado(req, res));
+        this.router.get('/Doctorados/reporteDoctorado', (req, res) => this.controller.countDoctorados(req, res));
     }
 }
 exports.DoctoradoRouter = DoctoradoRouter;

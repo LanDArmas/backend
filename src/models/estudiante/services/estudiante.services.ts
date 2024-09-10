@@ -46,34 +46,9 @@ export class EstudianteService extends BaseService<EstudianteEntity> {
     const results = await query.getRawMany();
   
     return results;
-  }
-  
-  
-
-
-  
-
-  
+  } 
+      
   async createEstudiante(body: EstudianteDTO): Promise<EstudianteEntity> {
-
-    //console.log(body)
-    // const estudiante = new EstudianteEntity();
-    
-    // estudiante.id_estudiante = body.id_estudiante;
-    // estudiante.ci = body.ci;
-    // estudiante.nombre_est = body.nombre_est;
-    // estudiante.primer_apellido_est = body.primer_apellido_est;
-    // estudiante.segundo_apellido_est = body.segundo_apellido_est;
-    // estudiante.sexo = body.sexo;
-    // estudiante.cuadro = body.cuadro;
-    // estudiante.reserva = body.reserva;
-    // estudiante.posgrado = body.id_posgrado;
-    // //estudiante.docente = body.docente;
-
-    // const docente = new DocenteEntity();
-    // docente.facultad_doc = body.docente.facultad_doc;
-
-
     return (await this.execRepository).save(body);
   }
 
@@ -83,12 +58,18 @@ export class EstudianteService extends BaseService<EstudianteEntity> {
 
   async updateEstudiante(id_estudiante: number, infoUpdate: EstudianteDTO): Promise<UpdateResult> {
     return (await this.execRepository).update(id_estudiante, infoUpdate);
-}
-// async findStudentsByCourse(id_posgrado: number): Promise<EstudianteEntity[]> {
-//   return (await this.execRepository)
-//     .createQueryBuilder('estudiante')
-//     .innerJoin('estudiante.posgrado', 'posgrado')
-//     .where('posgrado.id_posgrado = :id_posgrado', { id_posgrado })
-//     .getMany();
-// }
+  }
+
+  async countEstudiantesByTipo(): Promise<any[]> {
+    return (await this.execRepository)
+      .createQueryBuilder('estudiante')
+      .select('COUNT(CASE WHEN estudiante.docente IS NOT NULL THEN 1 ELSE NULL END)', 'estudiantes_docentes')
+      .addSelect('COUNT(CASE WHEN estudiante.noDocente IS NOT NULL THEN 1 ELSE NULL END)', 'estudiantes_no_docentes')
+      .leftJoinAndSelect('estudiante.docente', 'docente')
+      .leftJoinAndSelect('estudiante.noDocente', 'noDocente')
+      .getRawMany();
+  }
+
+
+
 }

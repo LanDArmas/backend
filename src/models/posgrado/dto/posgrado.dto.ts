@@ -2,7 +2,7 @@ import { IsNotEmpty, IsString, IsNumber, IsDate, IsBoolean, IsInt, ValidateNeste
 import { BaseDTO } from "../../../config/base.dto";
 import { Type } from "class-transformer";
 
-export class PosgradoDTO  {
+export class PosgradoDTO extends BaseDTO {
     @IsNotEmpty()
     id_posgrado!: number;
     
