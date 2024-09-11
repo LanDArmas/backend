@@ -41,7 +41,7 @@ __decorate([
     __metadata("design:type", String)
 ], DoctoradoEntity.prototype, "area_ciencia", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => profesor_entity_1.ProfesorEntity, (profesor) => profesor.doctorado, { onDelete: 'CASCADE', onUpdate: 'CASCADE' }),
+    (0, typeorm_1.OneToOne)(() => profesor_entity_1.ProfesorEntity, (profesor) => profesor.doctorado, { onDelete: 'CASCADE', /*onUpdate: 'CASCADE'*/ }),
     (0, typeorm_1.JoinColumn)({ name: 'id_profe' }) // Asegurarse de que está correctamente relacionado
     ,
     __metadata("design:type", profesor_entity_1.ProfesorEntity)

@@ -19,11 +19,6 @@ class DoctoradoDTO extends base_dto_1.BaseDTO {
 exports.DoctoradoDTO = DoctoradoDTO;
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsNumber)(),
-    __metadata("design:type", Number)
-], DoctoradoDTO.prototype, "id_doctorado", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], DoctoradoDTO.prototype, "nombre_programa", void 0);

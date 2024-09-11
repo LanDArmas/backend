@@ -46,7 +46,7 @@ __decorate([
     __metadata("design:type", Array)
 ], ProfesorEntity.prototype, "posgrado", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => doctorado_entity_1.DoctoradoEntity, (doctorado) => doctorado.profesor, { nullable: true, cascade: true }) // Relación opcional
+    (0, typeorm_1.OneToOne)(() => doctorado_entity_1.DoctoradoEntity, (doctorado) => doctorado.profesor, { cascade: true }) // Relación opcional
     ,
     __metadata("design:type", doctorado_entity_1.DoctoradoEntity)
 ], ProfesorEntity.prototype, "doctorado", void 0);

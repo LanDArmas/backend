@@ -15,10 +15,10 @@ async getDoctorados(req: Request, res: Response){
 }
 // obtain an user by id
 async getDoctoradoById(req: Request, res: Response){
-	const {id_doctorado} = req.params;
+	const {id} = req.params;
 
 	try {
-  		const data = await this.doctoradoService.findDoctoradoById(Number(id_doctorado));
+  		const data = await this.doctoradoService.findDoctoradoById(Number(id));
 		res.status(200).json(data);
 	} catch (e) {
 		console.error(e);            
@@ -37,9 +37,9 @@ const data = await this.doctoradoService.createDoctorado (req.body);
 
 //modify an user
 async updateDoctorado(req: Request, res: Response){
-	const {id_doctorado} = req.params;
+	const {id} = req.params;
 	try {
-		const data = await this.doctoradoService.updateDoctorado(Number(id_doctorado), req.body);
+		const data = await this.doctoradoService.updateDoctorado(Number(id), req.body);
 		res.status(200).json(data);
 	} catch (e) {
 		console.error(e);            
@@ -48,9 +48,9 @@ async updateDoctorado(req: Request, res: Response){
 
 //remove an user
 async deleteDoctorado(req: Request, res: Response){
-	const {id_doctorado} = req.params;
+	const {id} = req.params;
 	try {
-		const data = await this.doctoradoService.deleteDoctorado(Number(id_doctorado));
+		const data = await this.doctoradoService.deleteDoctorado(Number(id));
 		res.status(200).json(data);
 	} catch (e) {
 		console.error(e);            

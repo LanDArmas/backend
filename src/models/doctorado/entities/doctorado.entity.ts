@@ -22,7 +22,7 @@ export class DoctoradoEntity extends BaseEntity {
     @Column()
     area_ciencia!: string;
 
-    @OneToOne(() => ProfesorEntity, (profesor) => profesor.doctorado, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    @OneToOne(() => ProfesorEntity, (profesor) => profesor.doctorado, { onDelete: 'CASCADE', /*onUpdate: 'CASCADE'*/ })
     @JoinColumn({ name: 'id_profe' })  // Asegurarse de que está correctamente relacionado
-    profesor!: ProfesorEntity;
+    profesor?: ProfesorEntity;
 }

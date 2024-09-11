@@ -26,6 +26,6 @@ export class ProfesorEntity extends BaseEntity {
     @OneToMany(() => PosgradoEntity, (posgrado) => posgrado.profesor)
     posgrado!: PosgradoEntity[];
 
-    @OneToOne(() => DoctoradoEntity, (doctorado) => doctorado.profesor, { nullable: true, cascade: true })  // Relación opcional
+    @OneToOne(() => DoctoradoEntity, (doctorado) => doctorado.profesor, { cascade: true })  // Relación opcional
     doctorado?: DoctoradoEntity;  // Nota el uso de '?' para indicar que es opcional
 }

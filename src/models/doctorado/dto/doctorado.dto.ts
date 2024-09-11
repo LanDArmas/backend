@@ -4,9 +4,9 @@ import { BaseDTO } from "../../../config/base.dto";
 import { ProfesorEntity } from "../../profesor/entities/profesor.entity";
 
 export class DoctoradoDTO extends BaseDTO {
-    @IsNotEmpty()
-    @IsNumber()
-    id_doctorado!: number;
+    // @IsNotEmpty()
+    // @IsNumber()
+    // id_doctorado!: number;
 
     @IsNotEmpty()
     @IsString()
