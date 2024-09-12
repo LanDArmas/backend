@@ -14,7 +14,7 @@ export class PosgradoRouter extends BaseRouter<PosgradoController>{
 
         this.router.get('/Posgrados/Anexos', (req, res) => this.controller.findCountByPosgrado(req, res));
 
-        // adicionar usuarios
+        // adicionar usuariosx
         this.router.post('/Posgrado/createPosgrado', (req, res) => this.controller.createPosgrado(req, res));
         
         //modificar usuario
