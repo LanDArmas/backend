@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config jest.config.ts",
     "start": "tsc && node dist/server.js",
     "start:dev": "tsc && concurrently  \"tsc -w\" \"nodemon dist/server\" ",
     "start:prod": "SET NODE_ENV=production && npm start"
@@ -21,7 +21,6 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "pg": "^8.12.0",
-    "typeorm": "^0.3.20",
     "typeorm-naming-strategies": "^4.1.0",
     "typescript": "^5.5.4"
   },
@@ -31,11 +30,14 @@
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/morgan": "^1.9.9",
+    "@types/node": "^22.5.4",
     "concurrently": "^8.2.2",
     "jest": "^29.7.0",
     "jest-mock-extended": "^3.0.7",
     "nodemon": "^3.1.4",
-    "ts-jest": "^29.2.5"
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typeorm": "^0.3.20"
   },
   "directories": {
     "test": "test"

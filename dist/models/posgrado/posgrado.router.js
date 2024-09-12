@@ -13,7 +13,7 @@ class PosgradoRouter extends router_1.BaseRouter {
         // usuario por id
         this.router.get('/Posgrado/:id', (req, res) => this.controller.getPosgradoById(req, res));
         this.router.get('/Posgrados/Anexos', (req, res) => this.controller.findCountByPosgrado(req, res));
-        // adicionar usuarios
+        // adicionar usuariosx
         this.router.post('/Posgrado/createPosgrado', (req, res) => this.controller.createPosgrado(req, res));
         //modificar usuario
         this.router.put('/Posgrado/updatePosgrado/:id', (req, res) => this.controller.updatePosgrado(req, res));
