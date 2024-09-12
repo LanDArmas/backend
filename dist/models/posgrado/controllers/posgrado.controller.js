@@ -71,8 +71,8 @@ class PosgradoController {
     findPosgradoWithActividades(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const id = parseInt(req.params.id, 10);
-                const posgrado = yield this.posgradoService.findPosgradoWithActividades(id);
+                const { id } = req.params;
+                const posgrado = yield this.posgradoService.findPosgradoWithActividades(Number(id));
                 if (!posgrado) {
                     res.status(404).json({ message: 'Posgrado no encontrado' });
                 }

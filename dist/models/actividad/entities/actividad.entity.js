@@ -28,9 +28,9 @@ __decorate([
     __metadata("design:type", Date)
 ], ActividadEntity.prototype, "fecha_act", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => posgrado_entity_1.PosgradoEntity, (posgrado) => posgrado.actividad, { onDelete: 'CASCADE' }),
+    (0, typeorm_1.ManyToOne)(() => posgrado_entity_1.PosgradoEntity, (posgrado) => posgrado.actividades, { onDelete: 'CASCADE' }),
     (0, typeorm_1.JoinColumn)({ name: 'id_posgrado' }),
-    __metadata("design:type", Object)
+    __metadata("design:type", posgrado_entity_1.PosgradoEntity)
 ], ActividadEntity.prototype, "posgrado", void 0);
 exports.ActividadEntity = ActividadEntity = __decorate([
     (0, typeorm_1.Entity)({ name: "actividad" })

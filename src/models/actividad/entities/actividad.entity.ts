@@ -13,7 +13,8 @@ export class ActividadEntity extends BaseEntity {
     @Column()
     fecha_act!: Date;
 
-    @ManyToOne(() => PosgradoEntity, (posgrado) => posgrado.actividad, { onDelete: 'CASCADE'})
+    @ManyToOne(() => PosgradoEntity, (posgrado) => posgrado.actividades, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'id_posgrado' })
-    posgrado!: PosgradoEntity['id_posgrado'];
+    posgrado!: PosgradoEntity;
+
 }

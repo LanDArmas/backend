@@ -53,8 +53,8 @@ export class PosgradoController {
     
     async findPosgradoWithActividades(req: Request, res: Response): Promise<void> {
         try {
-          const id = parseInt(req.params.id, 10);
-          const posgrado = await this.posgradoService.findPosgradoWithActividades(id);
+          const { id } = req.params;
+          const posgrado = await this.posgradoService.findPosgradoWithActividades(Number(id));
           if (!posgrado) {
             res.status(404).json({ message: 'Posgrado no encontrado' });
           } else {

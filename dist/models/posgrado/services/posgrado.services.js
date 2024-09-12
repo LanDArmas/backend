@@ -18,11 +18,18 @@ class PosgradoService extends base_service_1.BaseService {
     }
     findPosgradoWithActividades(id_posgrado) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (yield this.execRepository).findOne({
-                where: { id_posgrado },
-                relations: ['actividad'],
-                select: ['nombre', 'actividad']
-            });
+            try {
+                const repository = yield this.execRepository;
+                const queryBuilder = repository.createQueryBuilder('posgrado')
+                    .leftJoinAndSelect('posgrado.actividades', 'actividad')
+                    .where('posgrado.id_posgrado = :id_posgrado', { id_posgrado });
+                const posgradoConActividades = yield queryBuilder.getMany();
+                return posgradoConActividades;
+            }
+            catch (error) {
+                console.error('Error in findPosgradoWithActividades:', error);
+                throw new Error('Error executing query');
+            }
         });
     }
     findAllPosgrados() {

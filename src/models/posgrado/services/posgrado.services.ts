@@ -1,4 +1,4 @@
-import { DeleteResult, Repository, UpdateResult } from "typeorm";
+import { DeleteResult, Repository, SelectQueryBuilder, UpdateResult } from "typeorm";
 import { BaseService } from "../../../config/base.service";
 import { PosgradoDTO } from "../dto/posgrado.dto";
 import { PosgradoEntity } from "../entities/posgrado.entity";
@@ -9,13 +9,25 @@ export class PosgradoService extends BaseService<PosgradoEntity> {
         super(PosgradoEntity);
      }
 
-     async findPosgradoWithActividades(id_posgrado: number): Promise<PosgradoEntity | null> {
-        return (await this.execRepository).findOne({
-          where: { id_posgrado },
-          relations: ['actividad'],
-          select: ['nombre', 'actividad']
-        });
-      }
+     async findPosgradoWithActividades(id_posgrado: number): Promise<any | null> {
+        try {
+            const repository = await this.execRepository;
+
+            const queryBuilder: SelectQueryBuilder<PosgradoEntity> = repository.createQueryBuilder('posgrado')
+                .leftJoinAndSelect('posgrado.actividades', 'actividad')
+                .where('posgrado.id_posgrado = :id_posgrado', { id_posgrado });
+
+            const posgradoConActividades = await queryBuilder.getMany();
+
+            return posgradoConActividades;
+        } catch (error) {
+            console.error('Error in findPosgradoWithActividades:', error);
+            throw new Error('Error executing query');
+        }
+    }
+    
+    
+    
 
     async findAllPosgrados(): Promise<PosgradoEntity[]> {
         return (await this.execRepository)

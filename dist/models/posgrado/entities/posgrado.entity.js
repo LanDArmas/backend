@@ -59,8 +59,8 @@ __decorate([
 ], PosgradoEntity.prototype, "estudiante", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => actividad_entity_1.ActividadEntity, (actividad) => actividad.posgrado),
-    __metadata("design:type", Object)
-], PosgradoEntity.prototype, "actividad", void 0);
+    __metadata("design:type", Array)
+], PosgradoEntity.prototype, "actividades", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => profesor_entity_1.ProfesorEntity, (profesor) => profesor.posgrado),
     (0, typeorm_1.JoinColumn)({ name: 'id_profe' }),

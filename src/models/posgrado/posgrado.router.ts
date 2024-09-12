@@ -23,7 +23,7 @@ export class PosgradoRouter extends BaseRouter<PosgradoController>{
         // eliminar usuario
         this.router.delete('/Posgrado/deletePosgrado/:id', (req, res) => this.controller.deletePosgrado(req, res));
 
-        this.router.get('/Posgrados/actividadesPosgrado/:id', (req, res) => this.controller.findPosgradoWithActividades(req, res));
+        this.router.get('/Posgrado/actividadesPosgrado/:id', (req, res) => this.controller.findPosgradoWithActividades(req, res));
        
 
     }

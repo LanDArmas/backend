@@ -36,7 +36,8 @@ export class PosgradoEntity extends BaseEntity {
     estudiante!: EstudianteEntity["id_estudiante"];
 
     @OneToMany(() => ActividadEntity, (actividad) => actividad.posgrado)
-    actividad!: ActividadEntity["id_actividad"]
+    actividades!: ActividadEntity[];
+
 
     @ManyToOne(() => ProfesorEntity, (profesor) => profesor.posgrado)
     @JoinColumn({ name: 'id_profe' })
